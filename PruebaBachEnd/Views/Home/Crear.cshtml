@@ -1,0 +1,139 @@
+﻿@using PruebaBachEnd.Models;
+@model GastosCLS;
+
+@{
+    ViewData["Title"] = "Registro de gastos";
+}
+
+<h1 class="display-2 my-2">Registro de pagos</h1>
+
+<div class="row">
+    <form id="enviarFrm" asp-action="Crear" method="post">
+
+        <div class="col-md 4">
+            <label asp-for="concepto"></label>
+            <input asp-for="concepto" class="form-control"/>
+            <span asp-validation-for="concepto" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-4">
+            <label asp-for="fechaDesde"></label>
+            <input asp-for="fechaDesde" class="form-control"
+                   min="@DateTime.Today.ToString("yyyy-MM-dd")"
+                   value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+            <span asp-validation-for="fechaDesde" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-4">
+            <label asp-for="fechaHasta"></label>
+            <input asp-for="fechaHasta" class="form-control"
+                   min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+            <span asp-validation-for="fechaHasta" class="text-danger"></span>
+        </div>
+
+        <h4 class="mt-3 container text-center">Información Del Empleado</h4>
+
+        <div class="col-md-6 my-2">
+            <label asp-for="nombre"></label>
+            <input asp-for="nombre" class="form-control"/>
+            <span asp-validation-for="nombre" class="text-danger"></span>
+            <label asp-for="departamento"></label>
+            <input asp-for="departamento" class="form-control"/>
+            <span asp-validation-for="departamento" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="posicion"></label>
+            <input asp-for="posicion" class="form-control"/>
+            <span asp-validation-for="posicion" class="text-danger"></span>
+            <label asp-for="supervisor"></label>
+            <input asp-for="supervisor" class="form-control"/>
+            <span asp-validation-for="supervisor" class="text-danger"></span>
+        </div>
+
+        <hr />
+
+        <h4 class="mt-3 container text-center">Detaller de Gastos</h4>
+
+        <div class="container row mb-1">
+            <div class="col-md 3">
+                <label asp-for="fecha1"></label>
+                <input asp-for="fecha1" class="form-control"
+                       min="@DateTime.Today.ToString("yyyy-MM-dd")"
+                       value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="fecha1" class="text-danger"></span>
+            </div>
+
+            <div class="col-md 3">
+                <label asp-for="cuenta1"></label>
+                <input asp-for="cuenta1" class="form-control"/>
+                <span asp-validation-for="cuenta1" class="text-danger"></span>
+            </div>
+
+            <div class="col-md 3">
+                <label asp-for="descripcion1"></label>
+                <input asp-for="descripcion1" class="form-control"/>
+                <span asp-validation-for="descripcion1" class="text-danger"></span>
+            </div>
+
+            <div class="col-md 3">
+                <label asp-for="total1"></label>
+                <input asp-for="total1" type="number" class="form-control"/>
+                <span asp-validation-for="total1" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="container row mt-1">
+            <div class="col-md 3">
+                <label asp-for="fecha2"></label>
+                <input asp-for="fecha2" class="form-control"
+                       min="@DateTime.Today.ToString("yyyy-MM-dd")"
+                       value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="fecha2" class="text-danger"></span>
+            </div>
+
+            <div class="col-md 3">
+                <label asp-for="cuenta2"></label>
+                <input asp-for="cuenta2" class="form-control"/>
+                <span asp-validation-for="cuenta2" class="text-danger"></span>
+            </div>
+
+            <div class="col-md 3">
+                <label asp-for="descripcion2"></label>
+                <input asp-for="descripcion2" class="form-control"/>
+                <span asp-validation-for="descripcion2" class="text-danger"></span>
+            </div>
+
+            <div class="col-md 3">
+                <label asp-for="total2"></label>
+                <input asp-for="total2" type="number" class="form-control"/>
+                <span asp-validation-for="total2" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="col-md-12 mt-5">
+            <label asp-for="aprobadoPor"></label>
+            <input asp-for="aprobadoPor" class="form-control"/>
+            <span asp-validation-for="aprobadoPor" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-12 my-4">
+            <a class="btn btn-outline-dark"
+               asp-action="Index" asp-controller="Home">
+                Regresar
+            </a>
+            <input type="button" class="btn btn-outline-success"
+                   value="Guardar"
+                    onclick="enviar()"/>
+        </div>
+    </form>
+</div>
+
+<script>
+    function enviar() {
+        var enviarFrm = document.getElementById("enviarFrm");
+        enviarFrm.submit();
+    }
+</script>

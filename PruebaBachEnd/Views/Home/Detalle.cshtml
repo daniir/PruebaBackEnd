@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PruebaBachEnd.Models.GastosCLS>;
+@{
+    ViewData["Title"] = "Detalle de Gastos";
+    List<GastosCLS> datosGasto = ViewBag.Datos;
+}
+
+<h1>Detalle de Gastos</h1>
+<a class="btn btn-primary float-right my-2"
+   asp-action="Index" asp-controller="Home">
+    Regresar
+</a>
+
+@foreach (var item in datosGasto)
+{
+    <span>
+        <strong>Nombre: </strong>@item.nombre
+    </span>
+    <br />
+    <span>
+        <strong>Id: </strong>@item.idColaborador
+    </span>
+    <br />
+    <span>
+        <strong>Departamento: </strong>@item.departamento
+    </span>
+    <br />
+    <span>
+        <strong>Total a Pagar: $</strong>@item.montoTotal
+    </span>
+}
+
+<div class="container mt-3">
+    <table class="table">
+        <thead class="thead-dark text-center">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.fecha1)</th>
+                <th>@Html.DisplayNameFor(model => model.cuenta1)</th>
+                <th>@Html.DisplayNameFor(model => model.descripcion1)</th>
+                <th>@Html.DisplayNameFor(model => model.total1)</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.fecha1)</td>
+                    <td>@Html.DisplayFor(modelItem => item.cuenta1)</td>
+                    <td>@Html.DisplayFor(modelItem => item.descripcion1)</td>
+                    <td>@Html.DisplayFor(modelItem => item.total1)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.fecha2)</td>
+                    <td>@Html.DisplayFor(modelItem => item.cuenta2)</td>
+                    <td>@Html.DisplayFor(modelItem => item.descripcion2)</td>
+                    <td>@Html.DisplayFor(modelItem => item.total2)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

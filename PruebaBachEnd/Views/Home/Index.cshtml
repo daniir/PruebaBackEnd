@@ -1,0 +1,37 @@
+﻿@model IEnumerable<PruebaBachEnd.Models.GastosCLS>;
+
+@{
+    ViewData["Title"] = "Gestión de Gastos";
+}
+
+<h2 class="mb-2 text-center display-3">Lista de Gastos Realizados</h2>
+<a class="btn btn-primary float-right my-2"
+   asp-action="Crear" asp-controller="Home">
+    Crear nuevo registro
+</a>
+
+<table class="table">
+    <thead class="thead-dark text-center">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.departamento)</th>
+            <th>@Html.DisplayNameFor(model => model.concepto)</th>
+            <th>@Html.DisplayNameFor(model => model.aprobadoPor)</th>
+            <th>Ver gasto</th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.departamento)</td>
+                <td>@Html.DisplayFor(modelItem => item.concepto)</td>
+                <td>@Html.DisplayFor(modelItem => item.aprobadoPor)</td>
+                <td>
+                    <a asp-action="Detalle" asp-route-id="@item.idColaborador">Detallar Gastos</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
